@@ -1,0 +1,101 @@
+@import '../../../assets/css/variables';
+
+nav {
+    box-shadow: 0 1px 3px rgba(var(--bs-black), .16) !important;
+    min-height: $theme-sidebar-brand-height;
+
+    .navMenuBtn {
+        height: 20px;
+
+        .menuTrigger {
+            width: 15px;
+            height: 2px;
+
+            &::after,
+            &::before {
+                content: "";
+                position: absolute;
+                width: 15px;
+                height: 2px;
+                background-color: inherit;
+                right: 50%;
+                transform: translateX(50%);
+                transition: all .3s ease-in-out;
+            }
+
+            &::after {
+                bottom: -6px;
+            }
+
+            &::before {
+                top: -6px;
+            }
+
+            &.active {
+                @include below-xl() {
+                    visibility: hidden;
+                }
+
+                &::after {
+                    width: 10px;
+                    transform: rotate(-45deg);
+
+                    @include above-xl() {
+                        right: -1px;
+                        bottom: -3px;
+
+                    }
+
+                    @include below-xl() {
+                        visibility: visible;
+                        width: 15px;
+                        bottom: 0;
+                        right: 0;
+                    }
+                }
+
+                &::before {
+                    width: 10px;
+                    transform: rotate(45deg);
+
+                    @include above-xl() {
+                        right: -1px;
+                        top: -3px;
+                    }
+
+                    @include below-xl() {
+                        visibility: visible;
+                        width: 15px;
+                        top: 0;
+                        right: 0;
+
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .notificationDropdown {
+        .dropdown-toggle {
+            .customBadge {
+                line-height: 0.601;
+                margin-left: -1.1rem;
+                margin-top: 6px;
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    .profileDropdown {
+        .dropdown-toggle {
+            &::after {
+                display: none;
+            }
+        }
+    }
+}

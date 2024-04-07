@@ -1,0 +1,96 @@
+@import '../../../assets/css/variables';
+
+.sidebarMenu {
+    width: $theme-sidebar-width !important;
+    transition: width .3s ease-in-out;
+
+    @include below-xl() {
+        top: $theme-mobile-header-height;
+        position: fixed;
+        z-index: 9;
+        left: -$theme-sidebar-width;
+        transition: left .3s ease-in-out;
+        height: calc(100% - $theme-mobile-header-height) !important;
+    }
+
+    .sidebarLogo {
+        height: $theme-sidebar-brand-height;
+
+        @include below-xl() {
+            display: none !important;
+        }
+    }
+
+    .navHeader {
+        @include below-xl() {
+            display: flex !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+    }
+
+    .sidebarList {
+        >ul {
+            li {
+                margin-top: 1px;
+
+                a {
+                    min-height: 2.8125rem;
+                    font-size: $theme-size-14;
+
+                    &.active,
+                    &:hover {
+                        background-color: var(--bs-primary);
+                        color: var(--bs-white);
+                    }
+
+                    svg {
+                        display: block;
+                        margin: auto;
+                    }
+
+                    .w-48 {
+                        width: 3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .showInSmallSidebar {
+        display: none;
+    }
+
+    &.sidebarAction {
+        @include below-xl() {
+            left: 0;
+        }
+
+        &:not(:hover) {
+            @include above-xl() {
+                width: 4rem !important;
+
+                .sidebarLink,
+                .navHeader,
+                .sidebarLogo {
+                    justify-content: center;
+                }
+
+                .hideInSmallSidebar,
+                .showInSidebar {
+                    display: none;
+                }
+
+                .showInSmallSidebar {
+                    display: block;
+                }
+
+                .navHeader,
+                .sidebarLogo {
+                    padding-left: .5rem !important;
+                    padding-right: .5rem !important;
+                }
+            }
+        }
+    }
+}
